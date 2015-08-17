@@ -1,0 +1,25 @@
+post_install() {
+
+cd /lib/modules/`uname -r`/kernel/drivers/net/wireless/rtlwifi
+
+mv rtlwifi.ko.gz oldrtlwifi.ko.gz
+
+mv newrtlwifi.ko.gz rtlwifi.ko.gz
+
+depmod -a
+  
+}
+
+#post_upgrade() {
+  
+#}
+
+post_remove() {
+
+cd /lib/modules/`uname -r`/kernel/drivers/net/wireless/rtlwifi
+
+mv oldrtlwifi.ko.gz rtlwifi.ko.gz
+
+depmod -a
+
+}
